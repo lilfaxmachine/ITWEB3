@@ -18,6 +18,21 @@ const userSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
+const scoreSchema = new Schema({
+  username: {
+    type: String,
+    required: true,
+    trim: true,
+    unique: true,
+  },
+  score: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  createdAt: { type: Date, default: Date.now },
+});
+
 userSchema.methods.verifyPassword = function (password) {
   console.log("this password: ", this.password);
   console.log("given password: ", password);
@@ -39,4 +54,4 @@ userSchema.methods.generateJwt = function () {
   );
 };
 
-module.exports = { userSchema };
+module.exports = { userSchema, scoreSchema };
