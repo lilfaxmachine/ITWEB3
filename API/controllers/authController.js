@@ -51,5 +51,7 @@ module.exports.login = function (req, res) {
 };
 
 module.exports.loginTest = function (req, res) {
-  res.status(200).json("Hej");
+  User.findById(req.payload._id, (err, user) => {
+    res.status(200).json({ message: user.email });
+  });
 };
