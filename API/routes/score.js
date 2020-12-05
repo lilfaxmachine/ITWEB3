@@ -11,5 +11,6 @@ var auth = jwt({
 
 /* GET home page. */
 router.post("/score", scoreController.postScore);
+router.get("/score", scoreController.getScores);
 
 module.exports = router;

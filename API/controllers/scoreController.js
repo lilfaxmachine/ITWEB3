@@ -18,3 +18,15 @@ module.exports.postScore = function (req, res) {
   });
   //});
 };
+
+module.exports.getScores = function (req, res) {
+  const scores = Scores.find({}, function (err, scores) {
+    var scoreMap = [];
+
+    scores.forEach(function (score) {
+      var scoreModel = { score: score.score, username: score.username };
+      scoreMap.push(scoreModel);
+    });
+    res.send(scoreMap);
+  });
+};
